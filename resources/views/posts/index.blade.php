@@ -5,7 +5,7 @@
         <title>Blog</title>
     </head>
     <body>
-        <h1>title</h1>
+        <h1>Blog</h1>
         <div class='posts'>
             @foreach($posts as $post)
                 <div class='post'>
@@ -13,8 +13,10 @@
                     <p class='body'>{{$post->body}}</p>
                 </div>
             @endforeach
+            <div class='paginate'>
+                {{$posts->links()}}
+            </div>
         </div>
-        <p>This is a sample body.</p>
     </body>
 </html>
 

@@ -13,6 +13,7 @@
             <div class='content'>
                 <p class='body'>{{$post->body}}</p>
             </div>
+        <a href='/posts/{{$post->id}}/edit'>編集する</a>    
         </div>
         <div class="back">
             <a href='/'>投稿一覧へ</a>

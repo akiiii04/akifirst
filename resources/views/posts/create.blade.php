@@ -18,7 +18,7 @@
                  <p class="body_error" style="color:red">{{ $errors->first('post.body') }}</p>
         </div>
         <input type="submit" value="保存"/>
-
+        </form>
         
         <div class="back">
             <a href='/'>投稿一覧へ</a>

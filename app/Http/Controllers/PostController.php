@@ -4,23 +4,35 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
 use App\Http\Requests\Postrequest;
+
 
 class PostController extends Controller
 {
     public function index(Post $post)
     {
-        return view('posts.index')->with(['posts' => $post->getPaginateBylimit()]);
-    }//
+        $client = new \GuzzleHttp\Client();
+        
+        $url = 'https://teratail.com/api/v1/questions';
+        
+        $response = $client->request('GET', $url, ['Bearer' => config('sevices.teratail.token')]);
+        
+        $questions = json_decode($response->getbody(), true);
+        
+        return view('posts.index')->with([
+            'posts' => $post->getPaginateBylimit(),
+            'questions' => $questions['questions']]);
+    }
     
     public function show(Post $post)
     {
         return view('posts.show')->with(['post' => $post]);
     }
     
-    public function create(Post $post)
+    public function create(Category $category)
     {
-        return view('posts.create');
+        return view('posts.create')->with(['categories' => $category->get()]);
     }
     
     public function store(PostRequest $request, Post $post)

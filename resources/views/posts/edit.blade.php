@@ -4,6 +4,7 @@
         <meta chratest="UTF-8">
         <title>Blog</title>
     </head>
+    <x-app-layout>
     <body>
 
         <h1 class="webtitle">ブログ投稿フォーム</h1>
@@ -25,4 +26,5 @@
             <a href='/'>投稿一覧へ</a>
         </div>
     </body>
+    </x-app-layout>
 </html>
